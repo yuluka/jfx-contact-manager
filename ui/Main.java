@@ -28,7 +28,7 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		//Parent root=FXMLLoader.load(getClass().getResource("ContactManager.fxml")); Se va cambiar por otras tres líneas.
 		
-		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("ContactManager.fxml"));
+		FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("main-pane.fxml"));
 		fxmlLoader.setController(contactManGUI);
 		Parent root=fxmlLoader.load();
 		

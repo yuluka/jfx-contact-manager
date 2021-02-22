@@ -16,6 +16,8 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#goToAddContact" text="Add contact" />
                   <MenuItem mnemonicParsing="false" onAction="#goToList" text="List contact" />
+                  <MenuItem mnemonicParsing="false" onAction="#importContacts" text="Import contacts" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportContacts" text="Export contacts" />
             </items>
           </Menu>
         </menus>

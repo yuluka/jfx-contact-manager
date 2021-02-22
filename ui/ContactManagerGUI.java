@@ -94,5 +94,14 @@ public class ContactManagerGUI {
     	lstContact.setItems(listContacts);
     }
 
+    
+    @FXML
+    public void importContacts(ActionEvent event) {
 
+    }
+    
+    @FXML
+    public void exportContacts(ActionEvent event) {
+
+    }
 }
