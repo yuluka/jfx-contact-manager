@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.collections.FXCollections;
@@ -8,11 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import model.Contact;
 import model.ContactManager;
 
@@ -45,6 +49,17 @@ public class ContactManagerGUI {
     public ContactManagerGUI(ContactManager objContactMan) {
     	this.objContactMan=objContactMan;
     	
+    }
+    
+    @FXML
+    public void showAbout(ActionEvent event) {
+    	Alert alert=new Alert(AlertType.INFORMATION);
+    	
+    	alert.setTitle("Contact Manager");
+    	alert.setHeaderText("Credits");
+    	alert.setContentText("Yuluka Gigante Muriel\nAPO II");
+    	
+    	alert.show();
     }
     
     @FXML
@@ -97,11 +112,49 @@ public class ContactManagerGUI {
     
     @FXML
     public void importContacts(ActionEvent event) {
+    	// Fijarse en estas líneas en caso de no recordar cómo usar el file chooser.
+    	FileChooser fc=new FileChooser();
+    	fc.setTitle("Select the contact list");
+    	File file = fc.showOpenDialog(mainPane.getScene().getWindow());
+    	
 
+		Alert alert=new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Import contacts");
+    	
+    	if(file!=null) {
+    		try {
+				objContactMan.importData(file.getAbsolutePath());
+				
+		    	alert.setContentText("Contact data was imported succesfuly");
+		    	alert.show();
+		    	
+			} catch (IOException e) {
+				alert.setContentText("Contact data wasn't imported succesfuly");
+		    	alert.show();
+			};
+    	}
     }
     
     @FXML
     public void exportContacts(ActionEvent event) {
-
+    	FileChooser fc=new FileChooser();
+    	fc.setTitle("Select the contact list");
+    	File file = fc.showSaveDialog(mainPane.getScene().getWindow());
+    	
+    	Alert alert=new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Import contacts");
+    	
+    	if(file!=null) {
+    		try {
+				objContactMan.exportData(file.getAbsolutePath());
+				
+		    	alert.setContentText("Contact data was exported succesfuly");
+		    	alert.show();
+		    	
+			} catch (IOException e) {
+				alert.setContentText("Contact data wasn't exported succesfuly");
+		    	alert.show();
+			};
+    	}
     }
 }

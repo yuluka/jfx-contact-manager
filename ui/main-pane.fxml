@@ -20,6 +20,11 @@
                   <MenuItem mnemonicParsing="false" onAction="#exportContacts" text="Export contacts" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <Pane fx:id="mainPane" prefHeight="391.0" prefWidth="600.0">
